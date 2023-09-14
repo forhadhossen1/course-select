@@ -27,16 +27,26 @@ const Cards = () => {
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Already Selected This Course'
-              })
+            })
         } else {
             selectedCourse.forEach(item => {
                 hours = hours + item.course_hours;
             });
             const totalRemaining = remainingTime - hours;
-            setTotalHours(hours);
-            setRemaining(totalRemaining);
 
-            setSelectedCourse([...selectedCourse, course]);
+            if (hours > remainingTime) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Sorry...',
+                    text: 'You can not selec this.Your Credit time limit cross.'
+                })
+            } else {
+                setTotalHours(hours);
+                setRemaining(totalRemaining);
+                // console.log(totalHours);
+                setSelectedCourse([...selectedCourse, course]);
+            }
+
         }
     };
     // console.log(selectedCourse)

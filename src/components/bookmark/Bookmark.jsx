@@ -17,6 +17,8 @@ const Bookmark = ({ selectedCourse, totalHours, remaining }) => {
 
 Bookmark.propTypes = {
     selectedCourse: PropTypes.array,
+    totalHours: PropTypes.number,
+    remaining: PropTypes.number
 
 }
 
