@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 const Bookmark = ({ selectedCourse, totalHours, remaining }) => {
     return (
         <div className='bg-slate-300 rounded-lg p-5 mt-4 md:mt-0' >
-            <h1 className="text-xl font-semibold border-b-2 pb-4">Credit Hour Remaining {remaining} hrs</h1>
+            <h1 className="text-xl font-semibold border-b-2 pb-4 text-blue-700">Credit Hour Remaining {remaining} hrs</h1>
             <h1 className="text-2xl font-semibold pt-4">Course Name</h1>
             {
                 selectedCourse.map(course => (
