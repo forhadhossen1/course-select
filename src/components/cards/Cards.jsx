@@ -5,12 +5,18 @@ import Bookmark from "../bookmark/Bookmark";
 const Cards = () => {
 
     const [allCourse, setAllCourse] = useState([]);
+    const [selectedCourse, setSelectedCourse] = useState([]);
 
     useEffect(() => {
         fetch('./course.json')
             .then(res => res.json())
             .then(data => setAllCourse(data))
-    }, [])
+    }, []);
+
+    const handleRegistration = (course) => {
+        setSelectedCourse([...selectedCourse, course]);
+    };
+    console.log(selectedCourse)
 
 
 
@@ -28,8 +34,9 @@ const Cards = () => {
                                     <p><i className="fa-solid fa-dollar-sign"></i> Price : {course.price} $</p>
                                     <p><i className="fa-solid fa-book-open"></i> Credit : {course.course_hours} hrs</p>
                                 </div>
+
                                 <div className="card-actions">
-                                    <button className="btn btn-primary w-full">select</button>
+                                    <button onClick={()=>handleRegistration(course)} className="btn btn-primary w-full">select</button>
                                 </div>
                             </div>
                         </div>
@@ -37,7 +44,7 @@ const Cards = () => {
                 }
             </div>
             <div>
-                <Bookmark></Bookmark>
+                <Bookmark selectedCourse ={selectedCourse}></Bookmark>
             </div>
         </div>
     );
